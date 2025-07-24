@@ -1,0 +1,121 @@
+1.#include <iostream>
+#include <cctype>
+using namespace std;
+
+bool isNumericConstant(const string& input) {
+
+    if (input.empty()) return false;
+
+    for (char ch : input) {
+        if (!isdigit(ch)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    string input;
+    cout << "Enter a value: ";
+    cin >> input;
+
+    if (isNumericConstant(input)) {
+        cout << "This is a numeric constant." << endl;
+    } else {
+        cout << "This is NOT a numeric constant." << endl;
+    }
+
+    return 0;
+}
+
+
+
+2.#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string input;
+    cout << "Enter an expression: ";
+    getline(cin, input);
+
+    int operatorCount = 0;
+
+    for (int i = 0; i < (int)input.length(); i++) {
+        char ch = input[i];
+
+        if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '%' || ch == '=') {
+            operatorCount++;
+            cout << "operator" << operatorCount << ": " << ch << endl;
+        }
+    }
+
+    if (operatorCount == 0) {
+        cout << "No operators found." << endl;
+    }
+
+    return 0;
+}
+
+
+
+
+3.#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string input;
+    cout << "Enter a line: ";
+    getline(cin, input);
+
+    if (input.find("//") == 0) {
+        cout << "This is a single-line comment." << endl;
+    }
+    else if (input.find("/*") == 0 && input.rfind("*/") == input.length() - 2) {
+        cout << "This is a multi-line comment." << endl;
+    }
+    else {
+        cout << "Comment line." << endl;
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+4.#include <iostream>
+using namespace std;
+
+int main() {
+    string input;
+    cout << "Enter a word: ";
+    cin >> input;
+
+
+    if (!((input[0] >= 'A' && input[0] <= 'Z') ||
+          (input[0] >= 'a' && input[0] <= 'z') ||
+           input[0] == '_')) {
+        cout << "Not a valid identifier." << endl;
+        return 0;
+    }
+
+
+    for (int i = 1; i < input.length(); i++) {
+        char ch = input[i];
+        if (!((ch >= 'A' && ch <= 'Z') ||
+              (ch >= 'a' && ch <= 'z') ||
+              (ch >= '0' && ch <= '9') ||
+               ch == '_')) {
+            cout << "Not a valid identifier." << endl;
+            return 0;
+        }
+    }
+
+    cout << "Valid identifier." << endl;
+    return 0;
+}
